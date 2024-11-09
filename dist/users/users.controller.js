@@ -15,25 +15,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const create_user_dto_1 = require("./dtos/create-user.dto");
+const userParam_dto_1 = require("./dtos/userParam.dto");
 let UsersController = class UsersController {
-    getUsers(id, limit, page) {
-        console.log(limit);
-        console.log(page);
+    getUsers(getUserSParams, limit, page) {
+        console.log(getUserSParams);
         return 'You sent a get request to users endpoint';
     }
     createUsers(createUserDto) {
-        console.log(createUserDto);
+        console.log(createUserDto instanceof create_user_dto_1.CreateUserDto);
         return createUserDto;
     }
 };
 exports.UsersController = UsersController;
 __decorate([
     (0, common_1.Get)('/:id?'),
-    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(0, (0, common_1.Param)()),
     __param(1, (0, common_1.Query)('limit', new common_1.DefaultValuePipe(10), common_1.ParseIntPipe)),
     __param(2, (0, common_1.Query)('page', new common_1.DefaultValuePipe(1), common_1.ParseIntPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number, Number]),
+    __metadata("design:paramtypes", [userParam_dto_1.GetUsersDtoParam, Number, Number]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getUsers", null);
 __decorate([
