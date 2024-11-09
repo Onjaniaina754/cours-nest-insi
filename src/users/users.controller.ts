@@ -1,15 +1,15 @@
 import {
   Controller,
-  Delete,
+//  Delete,
   Get,
   Param,
-  Patch,
+//  Patch,
   Post,
-  Put,
+//  Put,
   Query,
   Body,
-  Headers,
-  Ip,
+//  Headers,
+ // Ip,
   ParseIntPipe,
   DefaultValuePipe,
   ValidationPipe,
@@ -28,7 +28,6 @@ export class UsersController {
    * /users/1223 -> returns one user whos id is 1234
    * /users?limit=10&page=2 -> return page 2 with limt of pagination 10
    */
-
   @Get('/:id?')
   public getUsers(
     @Param('id', ParseIntPipe) id: number | undefined,
@@ -43,6 +42,6 @@ export class UsersController {
   @Post()
   public createUsers(@Body(new ValidationPipe()) createUserDto: CreateUserDto) {
     console.log(createUserDto);
-    return 'You sent a post request to users endpoint';
+    return createUserDto
   }
 }
