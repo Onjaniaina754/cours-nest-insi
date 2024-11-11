@@ -16,6 +16,7 @@ exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const create_user_dto_1 = require("./dtos/create-user.dto");
 const userParam_dto_1 = require("./dtos/userParam.dto");
+const patch_user_dto_1 = require("./dtos/patch-user.dto");
 let UsersController = class UsersController {
     getUsers(getUserSParams, limit, page) {
         console.log(getUserSParams);
@@ -24,6 +25,9 @@ let UsersController = class UsersController {
     createUsers(createUserDto) {
         console.log(createUserDto instanceof create_user_dto_1.CreateUserDto);
         return createUserDto;
+    }
+    patchUser(patchUserDto) {
+        return patchUserDto;
     }
 };
 exports.UsersController = UsersController;
@@ -38,11 +42,18 @@ __decorate([
 ], UsersController.prototype, "getUsers", null);
 __decorate([
     (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)(new common_1.ValidationPipe())),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "createUsers", null);
+__decorate([
+    (0, common_1.Patch)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [patch_user_dto_1.PatchUserDto]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "patchUser", null);
 exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('users')
 ], UsersController);
